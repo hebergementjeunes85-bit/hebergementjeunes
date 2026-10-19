@@ -1,0 +1,60 @@
+media:
+
+  input: images
+
+  output: /images
+
+content:
+
+  - name: annonces
+
+    label: Annonces
+
+    type: file
+
+    path: data/annonces.json
+
+    fields:
+
+      - name: annonces
+
+        label: Logements
+
+        type: object
+
+        list: true
+
+        fields:
+
+          - { name: titre, label: Titre, type: string }
+
+          - { name: disponible, label: Disponible (décocher si loué), type: boolean, default: true }
+
+          - { name: type, label: "Type (studio, T2, chambre...)", type: string }
+
+          - { name: loyer, label: Loyer mensuel en € (charges comprises), type: number }
+
+          - { name: surface, label: Surface en m², type: number }
+
+          - { name: quartier, label: Quartier / adresse approximative, type: string }
+
+          - { name: description, label: Descriptif, type: text }
+
+          - { name: photos, label: Photos (la première est la photo principale), type: image, list: true }
+
+  - name: infos
+
+    label: Infos de contact
+
+    type: file
+
+    path: data/site.json
+
+    fields:
+
+      - { name: intro, label: Texte d'introduction, type: text }
+
+      - { name: telephone, label: Téléphone, type: string }
+
+      - { name: email, label: Email, type: string }
+
