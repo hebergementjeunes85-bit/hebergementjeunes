@@ -1,0 +1,14 @@
+{
+  "annonces": [
+    {
+      "titre": "Studio meublé proche centre-ville",
+      "disponible": true,
+      "type": "Studio",
+      "loyer": 380,
+      "surface": 20,
+      "quartier": "Centre de Challans",
+      "description": "Studio meublé et équipé : lit, coin cuisine, salle d'eau, internet. Idéal pour un étudiant ou un apprenti. Commerces et gare routière à pied.\n\nExemple d'annonce : modifie-la ou supprime-la depuis l'espace admin.",
+      "photos": []
+    }
+  ]
+}

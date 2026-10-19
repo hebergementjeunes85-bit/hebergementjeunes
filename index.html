@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hébergement jeunes à Challans – logements meublés en Vendée</title>
+<meta name="description" content="Location de logements meublés pour jeunes à Challans (Vendée) : studios et chambres pour étudiants, apprentis, stagiaires et saisonniers.">
+<style>
+:root{--bg:#f4f7f6;--ink:#17313b;--muted:#5b6b72;--accent:#0f7c8a;--sun:#f2c14e;--line:#d6e0e2;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 ui-rounded,"Segoe UI",system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{background:var(--ink);color:#fff;padding:44px 0 36px}
+h1{margin:0 0 10px;font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.1;max-width:18ch}
+header p{margin:0 0 22px;max-width:52ch;color:#cfe0e3}
+.btn{display:inline-block;padding:11px 18px;border-radius:8px;background:var(--sun);color:var(--ink);font-weight:700;text-decoration:none;margin:0 8px 8px 0}
+.btn.alt{background:transparent;color:#fff;border:2px solid #4f7280}
+.btn:focus-visible,.th:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{padding:32px 0 48px}
+.count{color:var(--muted);margin:0 0 20px}
+.ad{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:22px}
+.ad.off{opacity:.6}
+.main-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#dfe9ea;display:block}
+.noimg{aspect-ratio:4/3;border-radius:10px;background:#dfe9ea;display:grid;place-items:center;color:var(--muted);font-size:.95rem}
+.thumbs{display:flex;gap:8px;margin-top:8px;overflow-x:auto}
+.th{border:2px solid transparent;padding:0;border-radius:6px;background:none;cursor:pointer;flex:0 0 auto}
+.th img{width:64px;height:48px;object-fit:cover;border-radius:4px;display:block}
+.th[aria-current=true]{border-color:var(--accent)}
+.ad h2{margin:2px 0 6px;font-size:1.35rem;line-height:1.25}
+.tag{display:inline-block;font-size:.85rem;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--sun);margin-bottom:8px}
+.tag.off{background:#cdd6d8}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;padding:0;list-style:none;color:var(--muted);font-size:.95rem}
+.price{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.desc{white-space:pre-line;margin:0 0 14px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.ad{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Se loger à Challans quand on est jeune</h1>
+<p id="intro"></p>
+<div id="contact"></div>
+</div></header>
+<main class="wrap">
+<p class="count" id="count"></p>
+<div id="list"><p class="empty">Chargement des annonces…</p></div>
+</main>
+<footer><div class="wrap">Hébergement jeunes · Challans, Vendée</div></footer>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const src=p=>esc(String(p).replace(/^\/+/,""));
+async function load(u){const r=await fetch(u,{cache:"no-cache"});if(!r.ok)throw new Error(u);return r.json()}
+function ad(a,i){
+  const ph=(a.photos||[]).filter(Boolean),off=a.disponible===false;
+  const img=ph.length?`<img class="main-img" id="m${i}" src="${src(ph[0])}" alt="${esc(a.titre)}">`:`<div class="noimg">Photos bientôt disponibles</div>`;
+  const th=ph.length>1?`<div class="thumbs">${ph.map((p,k)=>`<button class="th" data-i="${i}" data-s="${src(p)}" aria-label="Photo ${k+1}" ${k?"":'aria-current="true"'}><img src="${src(p)}" alt="" loading="lazy"></button>`).join("")}</div>`:"";
+  const f=[a.type,a.surface?a.surface+" m²":"",a.quartier].filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("");
+  return `<article class="ad${off?" off":""}"><div>${img}${th}</div><div>
+  <span class="tag${off?" off":""}">${off?"Loué":"Disponible"}</span>
+  <h2>${esc(a.titre)}</h2>
+  ${a.loyer?`<div class="price">${esc(a.loyer)} €<small> /mois</small></div>`:""}
+  <ul class="facts">${f}</ul>
+  <p class="desc">${esc(a.description)}</p></div></article>`}
+(async()=>{
+  try{
+    const [s,d]=await Promise.all([load("data/site.json"),load("data/annonces.json")]);
+    document.getElementById("intro").textContent=s.intro||"";
+    let c="";
+    if(s.telephone)c+=`<a class="btn" href="tel:${esc(s.telephone.replace(/\s/g,""))}">Appeler ${esc(s.telephone)}</a>`;
+    if(s.email)c+=`<a class="btn alt" href="mailto:${esc(s.email)}">Écrire un email</a>`;
+    document.getElementById("contact").innerHTML=c;
+    const l=(d.annonces||[]).slice().sort((a,b)=>(a.disponible===false)-(b.disponible===false));
+    const n=l.filter(a=>a.disponible!==false).length;
+    document.getElementById("count").textContent=n?`${n} logement${n>1?"s":""} disponible${n>1?"s":""}`:"";
+    document.getElementById("list").innerHTML=l.length?l.map(ad).join(""):`<p class="empty">Aucun logement pour le moment. Contactez-nous pour être prévenu.</p>`;
+  }catch(e){document.getElementById("list").innerHTML=`<p class="empty">Impossible de charger les annonces. Réessayez plus tard.</p>`}
+})();
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".th");if(!b)return;
+  document.getElementById("m"+b.dataset.i).src=b.dataset.s;
+  b.parentNode.querySelectorAll(".th").forEach(x=>x.removeAttribute("aria-current"));
+  b.setAttribute("aria-current","true");
+});
+</script>
+</body>
+</html>
