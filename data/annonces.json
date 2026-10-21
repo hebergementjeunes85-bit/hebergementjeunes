@@ -11,6 +11,18 @@
       "photos": [
         "/images/Capture d'écran 2026-10-19 151416RRRRRRR.png"
       ]
+    },
+    {
+      "titre": "Logement studio  2",
+      "disponible": true,
+      "type": "Studio meublée plein centre ",
+      "loyer": 450,
+      "surface": 28,
+      "quartier": "QUARTIER DE L EGLISE ",
+      "description": "BLBLBLBLBLB",
+      "photos": [
+        "/images/Capture d'écran 2026-10-19 151416RRRRRRR.png"
+      ]
     }
   ]
 }
