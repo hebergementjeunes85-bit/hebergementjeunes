@@ -1,4 +1,10 @@
-media:
+  - name: association
+    label: Page association
+    type: file
+    path: data/association.json
+    fields:
+      - { name: titre, label: Titre, type: string }
+      - { name: texte, label: Texte (une ligne vide entre chaque paragraphe), type: text }media:
 
   input: images
 
