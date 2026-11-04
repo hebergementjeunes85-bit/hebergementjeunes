@@ -78,7 +78,7 @@
     },
     {
       "titre": "STUDIO HYPER CENTRE ST05",
-      "disponible": true,
+      "disponible": false,
       "type": "STUDIO",
       "loyer": 500,
       "surface": 30,
