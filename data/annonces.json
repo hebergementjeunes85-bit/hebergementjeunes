@@ -32,6 +32,22 @@
         "/images/IMG_8544.jpeg",
         "/images/IMG_8543-1.jpeg"
       ]
+    },
+    {
+      "titre": "Studio le Perrier 1",
+      "disponible": true,
+      "type": "Studio le perrier 9km de challans",
+      "loyer": 370,
+      "surface": 20,
+      "quartier": "Le perrier",
+      "contact_nom": "Malidin",
+      "telephone": "06 25 52 03 11",
+      "email": "nadinemalidin85@gmail.com",
+      "description": "La location est à l'arrière de notre maison, \nelle comprend une pièce de vie avec canapé, tété,\ncuisine équipée, four, frigo, vaisselle...\nune chambre séparée, un lit de 140, bureau, étagère,\nSalle d'eau, wc,\nterrasse , parking privé,\nChauffage au sol, exposée sud-ouest\n\nnous sommes à 200m du bourg de Le Perrier,\n9km de Challans,\n\nle prix est de 370€ plus 60€ de charges, electricité, eau, internet,",
+      "photos": [
+        "/images/20210829_103124.jpg",
+        "/images/20210829_102429.jpg"
+      ]
     }
   ]
 }
