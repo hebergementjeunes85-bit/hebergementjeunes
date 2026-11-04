@@ -6,6 +6,8 @@ const PAGES=[["index.html","Accueil"],["association.html","L’association"],["l
 const here=location.pathname.split("/").pop()||"index.html";
 document.body.insertAdjacentHTML("afterbegin",`<header class="top"><div class="wrap bar"><a class="brand" href="index.html">Hébergements Jeunes <span>Challans</span></a><nav>${PAGES.map(([h,t])=>`<a href="${h}"${h===here?' aria-current="page"':""}>${t}</a>`).join("")}</nav></div></header>`);
 function contact(a){
+  const mode=a.mode_contact||((a.telephone||a.email)?"coordonnees":"formulaire");
+  if(mode==="formulaire")return `<div class="ctc"><a class="btn" href="contact.html?logement=${encodeURIComponent(a.titre||"")}#cf">Faire une demande pour ce logement</a></div>`;
   const t=a.telephone?`<a class="btn" href="tel:${esc(a.telephone.replace(/\s/g,""))}">Appeler ${esc(a.telephone)}</a>`:"";
   const m=a.email?`<a class="btn alt" href="mailto:${esc(a.email)}?subject=${encodeURIComponent("Annonce : "+(a.titre||""))}">Écrire un email</a>`:"";
   if(!t&&!m)return SITE_CONTACT?`<div class="ctc">${SITE_CONTACT}</div>`:"";
@@ -33,7 +35,8 @@ document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)retu
     if(!s.cle_formulaire){$("#cf-off").hidden=false}else{
       cf.hidden=false;
       try{const d=await load("data/annonces.json");const sel=$("#cf-log");
-        (d.annonces||[]).filter(a=>a.disponible!==false).forEach(a=>{const o=document.createElement("option");o.textContent=a.titre;sel.appendChild(o)})}catch(e){}
+        (d.annonces||[]).filter(a=>a.disponible!==false).forEach(a=>{const o=document.createElement("option");o.textContent=a.titre;sel.appendChild(o)});const q=new URLSearchParams(location.search).get("logement");if(q&&[...sel.options].some(o=>o.textContent===q))sel.value=q}catch(e){}
+      if(location.hash==="#cf")cf.scrollIntoView();
       cf.addEventListener("submit",async e=>{
         e.preventDefault();const m=$("#cf-msg"),b=cf.querySelector("button");
         b.disabled=true;m.textContent="Envoi en cours…";
