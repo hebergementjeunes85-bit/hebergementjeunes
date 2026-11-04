@@ -27,6 +27,25 @@ document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)retu
   const mail=s.email?`<a class="btn alt" href="mailto:${esc(s.email)}">Écrire un email</a>`:"";
   document.querySelectorAll("[data-contact]").forEach(n=>n.innerHTML=tel+mail);SITE_CONTACT=tel+mail;
   document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap">Association « Allo Hébergement Jeunes » · Challans, Vendée${s.telephone?` · ${esc(s.telephone)}`:""}${s.email?` · <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`:""}</div></footer>`);
+
+  const cf=$("#cf");
+  if(cf){
+    if(!s.cle_formulaire){$("#cf-off").hidden=false}else{
+      cf.hidden=false;
+      try{const d=await load("data/annonces.json");const sel=$("#cf-log");
+        (d.annonces||[]).filter(a=>a.disponible!==false).forEach(a=>{const o=document.createElement("option");o.textContent=a.titre;sel.appendChild(o)})}catch(e){}
+      cf.addEventListener("submit",async e=>{
+        e.preventDefault();const m=$("#cf-msg"),b=cf.querySelector("button");
+        b.disabled=true;m.textContent="Envoi en cours…";
+        const data=Object.fromEntries(new FormData(cf));
+        data.access_key=s.cle_formulaire;data.from_name="Site Hébergements Jeunes";
+        data.subject="Demande de logement : "+(data.name||"");
+        try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
+          const j=await r.json();
+          if(j.success){cf.reset();m.textContent="Merci, votre demande a bien été envoyée. Nous vous répondrons rapidement."}
+          else throw new Error(j.message)}
+        catch(err){m.textContent="L’envoi a échoué. Réessayez, ou appelez-nous directement."}
+        b.disabled=false})}}
   const list=$("#list"),latest=$("#latest"),assoc=$("#assoc");
   if(list||latest){try{
     const d=await load("data/annonces.json");

@@ -1,3 +1,22 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="style.css"><title>Contact – Hébergements Jeunes Challans</title></head><body>
 <section class="hero small"><div class="wrap"><h1>Nous contacter</h1><p>Appelez-nous ou écrivez-nous pour connaître les logements disponibles.</p><div data-contact></div></div></section>
-<main class="wrap"><div class="prose"><p data-intro></p></div></main><script src="app.js"></script></body></html>
+<main class="wrap"><div class="prose"><p data-intro></p></div>
+<h2 class="sec" style="margin-top:36px">Faire une demande de logement</h2>
+<p class="empty" id="cf-off" hidden>Le formulaire sera bientôt disponible. En attendant, appelez-nous ou écrivez-nous.</p>
+<form id="cf" class="form" hidden>
+<p class="note">Les champs marqués d’une * sont obligatoires. Ils nous permettent de transmettre votre demande au bon propriétaire.</p>
+<label>Nom et prénom *<input name="name" required autocomplete="name"></label>
+<label>Email *<input type="email" name="email" required autocomplete="email"></label>
+<label>Téléphone *<input type="tel" name="phone" required minlength="10" autocomplete="tel"></label>
+<label>Votre situation *<select name="situation" required><option value="">Choisir…</option><option>Étudiant</option><option>Apprenti / alternant</option><option>Stagiaire</option><option>Saisonnier</option><option>Jeune travailleur</option></select></label>
+<label>Établissement, entreprise ou employeur *<input name="structure" required></label>
+<label>Date d’entrée souhaitée *<input type="date" name="entree" required></label>
+<label>Durée du séjour *<select name="duree" required><option value="">Choisir…</option><option>Moins de 3 mois</option><option>3 à 6 mois</option><option>6 à 12 mois</option><option>Plus d’un an</option></select></label>
+<label>Budget mensuel maximum, en € *<input type="number" name="budget" min="0" required></label>
+<label>Logement concerné<select name="logement" id="cf-log"><option>Pas de logement précis</option></select></label>
+<label>Votre message *<textarea name="message" rows="4" minlength="20" required></textarea></label>
+<label class="chk"><input type="checkbox" required> J’accepte que ces informations soient transmises à l’association et au propriétaire pour traiter ma demande. *</label>
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn" type="submit">Envoyer ma demande</button>
+<p id="cf-msg" role="status"></p>
+</form></main><script src="app.js"></script></body></html>

@@ -44,3 +44,10 @@ footer{background:var(--dark);color:#cfe3d6;padding:26px 0;font-size:.95rem}
 footer a{color:#fff}
 @media(max-width:700px){.ad{grid-template-columns:1fr}.prose{padding:20px}}
 .ctc{margin-top:10px}.ctc .who{font-weight:700;color:var(--dark);margin-bottom:8px}.ctc .btn.alt{color:var(--green);border-color:var(--green)}
+.form{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;max-width:760px;display:grid;gap:14px}
+.form label{display:block;font-weight:600;font-size:.95rem}
+.form input,.form select,.form textarea{display:block;width:100%;margin-top:4px;padding:10px 12px;border:1px solid #b9c7bd;border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:3px solid var(--sun);border-color:var(--green)}
+.form .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400}.form .chk input{width:auto;margin-top:5px}
+.form .note{margin:0;color:var(--muted);font-size:.95rem}.form .btn{border:0;cursor:pointer;font:inherit;font-weight:700;justify-self:start}
+.form .btn:disabled{opacity:.6}.hp{position:absolute;left:-9999px}
