@@ -17,7 +17,7 @@
     },
     {
       "titre": "LOGEMENT CHAMBRE ETUDIANT CH2",
-      "disponible": true,
+      "disponible": false,
       "type": "Chambre meublée plein centre ",
       "loyer": 275,
       "surface": 14,
