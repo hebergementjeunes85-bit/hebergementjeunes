@@ -51,6 +51,16 @@
         "/images/20210829_103124.jpg",
         "/images/20210829_102429.jpg"
       ]
+    },
+    {
+      "titre": "CHAMBRE ETUDIANT CH2",
+      "disponible": true,
+      "type": "CHAMBRE ",
+      "loyer": 275,
+      "surface": 14,
+      "quartier": "PIERRE MONNIER CHALLANS ",
+      "mode_contact": "formulaire",
+      "description": "Chambre meublée en plein centre de challans, la chambre dispose d'un bureau , lit une personne , micro onde, frigo, televiseur et connexion internet .\nla salle de bain et le toilette sont partagées avec une autre chambre.\nLe loyer comprend ( eau éléctricité et internet ) seul la taxe sur les ordures est à rajouter."
     }
   ]
 }
