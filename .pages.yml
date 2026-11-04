@@ -18,6 +18,9 @@ content:
           - { name: loyer, label: Loyer mensuel en € (charges comprises), type: number }
           - { name: surface, label: Surface en m², type: number }
           - { name: quartier, label: Quartier / adresse approximative, type: string }
+          - { name: contact_nom, label: Nom du propriétaire (facultatif), type: string }
+          - { name: telephone, label: Téléphone du propriétaire, type: string }
+          - { name: email, label: Email du propriétaire, type: string }
           - { name: description, label: Descriptif, type: text }
           - { name: photos, label: Photos (la première est la photo principale), type: image, list: true }
   - name: infos
