@@ -61,6 +61,13 @@
       "quartier": "PIERRE MONNIER CHALLANS ",
       "mode_contact": "formulaire",
       "description": "Chambre meublée en plein centre de challans, la chambre dispose d'un bureau , lit une personne , micro onde, frigo, televiseur et connexion internet .\nla salle de bain et le toilette sont partagées avec une autre chambre.\nLe loyer comprend ( eau éléctricité et internet ) seul la taxe sur les ordures est à rajouter."
+    },
+    {
+      "titre": "STUDIO HYPER CENTRE CHALLANS ST04",
+      "disponible": true,
+      "type": "STUDIO",
+      "loyer": 500,
+      "mode_contact": "formulaire"
     }
   ]
 }
