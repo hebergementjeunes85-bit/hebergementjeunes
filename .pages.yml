@@ -22,6 +22,7 @@ content:
           - { name: telephone, label: Téléphone du propriétaire, type: string }
           - { name: email, label: Email du propriétaire, type: string }
           - { name: cle_formulaire, label: Clé du formulaire de contact (Web3Forms), type: string }
+          - { name: cle_formulaire, label: Clé du formulaire de contact (Web3Forms), type: string }
           - { name: description, label: Descriptif, type: text }
           - { name: photos, label: Photos (la première est la photo principale), type: image, list: true }
   - name: infos
