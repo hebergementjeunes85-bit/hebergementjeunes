@@ -18,9 +18,9 @@
     {
       "titre": "LOGEMENT CHAMBRE ETUDIANT CH2",
       "disponible": true,
-      "type": "Studio meublée plein centre ",
-      "loyer": 450,
-      "surface": 28,
+      "type": "Chambre meublée plein centre ",
+      "loyer": 275,
+      "surface": 14,
       "quartier": "QUARTIER DE L EGLISE ",
       "description": "BLBLBLBLBLB",
       "photos": [
