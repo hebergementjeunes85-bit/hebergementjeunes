@@ -2,7 +2,7 @@
   "annonces": [
     {
       "titre": "Studio meublé HYPER centre-ville",
-      "disponible": false,
+      "disponible": true,
       "type": "Studio",
       "loyer": 380,
       "surface": 20,
