@@ -26,7 +26,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)retu
   let s={};try{s=await load("data/site.json")}catch(e){}
   document.querySelectorAll("[data-intro]").forEach(n=>n.textContent=s.intro||"");
   const tel=s.telephone?`<a class="btn" href="tel:${esc(s.telephone.replace(/\s/g,""))}">Appeler ${esc(s.telephone)}</a>`:"";
-  const mail=s.email?`<a class="btn alt" href="mailto:${esc(s.email)}">Écrire un email</a>`:"";
+  const mail=s.cle_formulaire?`<a class="btn alt" href="contact.html#cf">Nous écrire</a>`:(s.email?`<a class="btn alt" href="mailto:${esc(s.email)}">Écrire un email</a>`:"");
   document.querySelectorAll("[data-contact]").forEach(n=>n.innerHTML=tel+mail);SITE_CONTACT=tel+mail;
   document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap">Association « Allo Hébergement Jeunes » · Challans, Vendée${s.telephone?` · ${esc(s.telephone)}`:""}${s.email?` · <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`:""}</div></footer>`);
 
