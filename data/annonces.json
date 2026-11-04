@@ -75,6 +75,13 @@
         "/images/studio 4 sol new.png",
         "/images/cuisine stud4 sol new.png"
       ]
+    },
+    {
+      "titre": "STUDIO HYPER CENTRE ST05",
+      "disponible": true,
+      "type": "STUDIO",
+      "loyer": 500,
+      "mode_contact": "formulaire"
     }
   ]
 }
