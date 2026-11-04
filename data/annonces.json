@@ -55,7 +55,7 @@
     },
     {
       "titre": "CHAMBRE ETUDIANT CH3",
-      "disponible": true,
+      "disponible": false,
       "type": "CHAMBRE ",
       "loyer": 275,
       "surface": 14,
@@ -94,7 +94,7 @@
     },
     {
       "titre": "STUDIO HYPER CENTRE CHALLANS ST06",
-      "disponible": true,
+      "disponible": false,
       "type": "STUDIO ",
       "loyer": 500,
       "surface": 28,
@@ -115,7 +115,11 @@
       "surface": 17,
       "quartier": "PIERRE MONNIER CHALLANS ",
       "mode_contact": "formulaire",
-      "description": "Studio 1 personne,\nSitué au centre de Challans face a l'église proche de toutes commodités ( boulangerie boucherie tabac Intermarché ) .\nStudio comprenant 1 piéce de vie avec banquette 1 pers bureau d'angle kitchenette + une salle de bains et toilette .\nLoyer 390€/mois comprenant eau électricité et connexion internet seul la taxe sur les ordures ménagères est a rajouter.\nGarant obligatoire, caution d'un mois de loyer, logement réservé a une personne seule.\n"
+      "description": "Studio 1 personne,\nSitué au centre de Challans face a l'église proche de toutes commodités ( boulangerie boucherie tabac Intermarché ) .\nStudio comprenant 1 piéce de vie avec banquette 1 pers bureau d'angle kitchenette + une salle de bains et toilette .\nLoyer 390€/mois comprenant eau électricité et connexion internet seul la taxe sur les ordures ménagères est a rajouter.\nGarant obligatoire, caution d'un mois de loyer, logement réservé a une personne seule.\n",
+      "photos": [
+        "/images/IMG_3660.jpg",
+        "/images/IMG_3662.jpg"
+      ]
     }
   ]
 }
