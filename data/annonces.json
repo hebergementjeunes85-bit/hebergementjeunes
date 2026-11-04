@@ -97,6 +97,8 @@
       "disponible": true,
       "type": "STUDIO ",
       "loyer": 500,
+      "surface": 28,
+      "quartier": "PIERRE MONNIER CHALLANS",
       "mode_contact": "formulaire"
     }
   ]
