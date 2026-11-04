@@ -106,6 +106,15 @@
         "/images/Capture d’écran 2025-04-18 162816.jpg",
         "/images/Capture d’écran 2025-04-18 162846.jpg"
       ]
+    },
+    {
+      "titre": "STUDIO HYPER CENTRE CHALLANS ST07",
+      "disponible": false,
+      "type": "STUDIO ",
+      "loyer": 390,
+      "surface": 17,
+      "quartier": "PIERRE MONNIER CHALLANS ",
+      "mode_contact": "formulaire"
     }
   ]
 }
