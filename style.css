@@ -43,3 +43,4 @@ h2.sec{margin:0 0 18px;font-size:1.6rem;color:var(--dark)}
 footer{background:var(--dark);color:#cfe3d6;padding:26px 0;font-size:.95rem}
 footer a{color:#fff}
 @media(max-width:700px){.ad{grid-template-columns:1fr}.prose{padding:20px}}
+.ctc{margin-top:10px}.ctc .who{font-weight:700;color:var(--dark);margin-bottom:8px}.ctc .btn.alt{color:var(--green);border-color:var(--green)}

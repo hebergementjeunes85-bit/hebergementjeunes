@@ -5,12 +5,18 @@ const $=s=>document.querySelector(s);
 const PAGES=[["index.html","Accueil"],["association.html","L’association"],["logements.html","Logements"],["contact.html","Contact"]];
 const here=location.pathname.split("/").pop()||"index.html";
 document.body.insertAdjacentHTML("afterbegin",`<header class="top"><div class="wrap bar"><a class="brand" href="index.html">Hébergements Jeunes <span>Challans</span></a><nav>${PAGES.map(([h,t])=>`<a href="${h}"${h===here?' aria-current="page"':""}>${t}</a>`).join("")}</nav></div></header>`);
+function contact(a){
+  const t=a.telephone?`<a class="btn" href="tel:${esc(a.telephone.replace(/\s/g,""))}">Appeler ${esc(a.telephone)}</a>`:"";
+  const m=a.email?`<a class="btn alt" href="mailto:${esc(a.email)}?subject=${encodeURIComponent("Annonce : "+(a.titre||""))}">Écrire un email</a>`:"";
+  if(!t&&!m)return SITE_CONTACT?`<div class="ctc">${SITE_CONTACT}</div>`:"";
+  return `<div class="ctc">${a.contact_nom?`<div class="who">Contact : ${esc(a.contact_nom)}</div>`:""}${t}${m}</div>`}
+let SITE_CONTACT="";
 function ad(a,i,k){
   const ph=(a.photos||[]).filter(Boolean),off=a.disponible===false,id=k+i;
   const img=ph.length?`<img class="main-img" id="m${id}" src="${src(ph[0])}" alt="${esc(a.titre)}">`:`<div class="noimg">Photos bientôt disponibles</div>`;
   const th=ph.length>1?`<div class="thumbs">${ph.map((p,n)=>`<button class="th" data-i="${id}" data-s="${src(p)}" aria-label="Photo ${n+1}"${n?"":' aria-current="true"'}><img src="${src(p)}" alt="" loading="lazy"></button>`).join("")}</div>`:"";
   const f=[a.type,a.surface?a.surface+" m²":"",a.quartier].filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("");
-  return `<article class="ad${off?" off":""}"><div>${img}${th}</div><div><span class="tag${off?" off":""}">${off?"Loué":"Disponible"}</span><h3>${esc(a.titre)}</h3>${a.loyer?`<div class="price">${esc(a.loyer)} €<small> /mois</small></div>`:""}<ul class="facts">${f}</ul><p class="desc">${esc(a.description)}</p></div></article>`}
+  return `<article class="ad${off?" off":""}"><div>${img}${th}</div><div><span class="tag${off?" off":""}">${off?"Loué":"Disponible"}</span><h3>${esc(a.titre)}</h3>${a.loyer?`<div class="price">${esc(a.loyer)} €<small> /mois</small></div>`:""}<ul class="facts">${f}</ul><p class="desc">${esc(a.description)}</p>${off?"":contact(a)}</div></article>`}
 document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)return;
   document.getElementById("m"+b.dataset.i).src=b.dataset.s;
   b.parentNode.querySelectorAll(".th").forEach(x=>x.removeAttribute("aria-current"));b.setAttribute("aria-current","true")});
@@ -19,7 +25,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)retu
   document.querySelectorAll("[data-intro]").forEach(n=>n.textContent=s.intro||"");
   const tel=s.telephone?`<a class="btn" href="tel:${esc(s.telephone.replace(/\s/g,""))}">Appeler ${esc(s.telephone)}</a>`:"";
   const mail=s.email?`<a class="btn alt" href="mailto:${esc(s.email)}">Écrire un email</a>`:"";
-  document.querySelectorAll("[data-contact]").forEach(n=>n.innerHTML=tel+mail);
+  document.querySelectorAll("[data-contact]").forEach(n=>n.innerHTML=tel+mail);SITE_CONTACT=tel+mail;
   document.body.insertAdjacentHTML("beforeend",`<footer><div class="wrap">Association « Allo Hébergement Jeunes » · Challans, Vendée${s.telephone?` · ${esc(s.telephone)}`:""}${s.email?` · <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`:""}</div></footer>`);
   const list=$("#list"),latest=$("#latest"),assoc=$("#assoc");
   if(list||latest){try{
