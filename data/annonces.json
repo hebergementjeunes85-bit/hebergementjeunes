@@ -91,6 +91,13 @@
         "/images/IMG20221110142248.jpg",
         "/images/IMG20230901171557.jpg"
       ]
+    },
+    {
+      "titre": "STUDIO HYPER CENTRE CHALLANS ST06",
+      "disponible": true,
+      "type": "STUDIO ",
+      "loyer": 500,
+      "mode_contact": "formulaire"
     }
   ]
 }
