@@ -64,7 +64,7 @@
     },
     {
       "titre": "STUDIO HYPER CENTRE CHALLANS ST04",
-      "disponible": true,
+      "disponible": false,
       "type": "STUDIO",
       "loyer": 480,
       "surface": 28,
