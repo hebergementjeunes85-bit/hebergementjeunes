@@ -20,7 +20,7 @@
     },
     {
       "titre": "LOGEMENT CHAMBRE ETUDIANT CH2",
-      "disponible": false,
+      "disponible": true,
       "type": "Chambre meublée plein centre ",
       "loyer": 275,
       "surface": 14,
@@ -28,7 +28,7 @@
       "mode_contact": "formulaire",
       "telephone": "0789554337",
       "email": "challanslocations@gmail.com",
-      "description": "Chambre meublée en plein centre de challans, la chambre dispose d'un bureau , lit une personne , micro onde, frigo, televiseur et connexion internet .\nla salle de bain et le toilette sont partagées avec une autre chambre.\nLe loyer comprend ( eau éléctricité et internet ) seul la taxe sur les ordures est à rajouter.",
+      "description": "Chambre meublée en plein centre de challans, la chambre dispose d'un bureau , lit une personne , micro onde, frigo, televiseur et connexion internet .\nla salle de bain et le toilette sont partagées avec une autre chambre.\nLe loyer comprend ( eau éléctricité et internet ) seul la taxe sur les ordures est à rajouter.\nDISPONIBLE EN DECEMBRE ",
       "photos": [
         "/images/Capture d'écran 2026-10-19 151416RRRRRRR.png",
         "/images/IMG_8544.jpeg",
