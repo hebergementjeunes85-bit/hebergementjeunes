@@ -13,15 +13,14 @@ function contact(a){
   if(!t&&!m)return SITE_CONTACT?`<div class="ctc">${SITE_CONTACT}</div>`:"";
   return `<div class="ctc">${a.contact_nom?`<div class="who">Contact : ${esc(a.contact_nom)}</div>`:""}${t}${m}</div>`}
 let SITE_CONTACT="";
-const PH={};
 function ad(a,i,k){
-  const ph=(a.photos||[]).filter(Boolean),off=a.disponible===false,id=k+i;PH[id]=ph;
-  const img=ph.length?`<img class="main-img" id="m${id}" src="${src(ph[0])}" alt="${esc(a.titre)}" data-n="0" tabindex="0" role="button" aria-label="Agrandir la photo" decoding="async"${i?' loading="lazy"':""}>`:`<div class="noimg">Photos bientôt disponibles</div>`;
-  const th=ph.length>1?`<div class="thumbs">${ph.map((p,n)=>`<button class="th" data-i="${id}" data-k="${n}" data-s="${src(p)}" aria-label="Photo ${n+1}"${n?"":' aria-current="true"'}><img src="${src(p)}" alt="" loading="lazy"></button>`).join("")}</div>`:"";
+  const ph=(a.photos||[]).filter(Boolean),off=a.disponible===false,id=k+i;
+  const img=ph.length?`<img class="main-img" id="m${id}" src="${src(ph[0])}" alt="${esc(a.titre)}" decoding="async"${i?' loading="lazy"':""}>`:`<div class="noimg">Photos bientôt disponibles</div>`;
+  const th=ph.length>1?`<div class="thumbs">${ph.map((p,n)=>`<button class="th" data-i="${id}" data-s="${src(p)}" aria-label="Photo ${n+1}"${n?"":' aria-current="true"'}><img src="${src(p)}" alt="" loading="lazy"></button>`).join("")}</div>`:"";
   const f=[a.type,a.surface?a.surface+" m²":"",a.quartier].filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join("");
   return `<article class="ad${off?" off":""}"><div>${img}${th}</div><div><span class="tag${off?" off":""}">${off?"Loué":"Disponible"}</span><h3>${esc(a.titre)}</h3>${a.loyer?`<div class="price">${esc(a.loyer)} €<small> /mois</small></div>`:""}<ul class="facts">${f}</ul><p class="desc">${esc(a.description)}</p>${off?"":contact(a)}</div></article>`}
 document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)return;
-  const mi=document.getElementById("m"+b.dataset.i);mi.src=b.dataset.s;mi.dataset.n=b.dataset.k;
+  document.getElementById("m"+b.dataset.i).src=b.dataset.s;
   b.parentNode.querySelectorAll(".th").forEach(x=>x.removeAttribute("aria-current"));b.setAttribute("aria-current","true")});
 (async()=>{
   let s={};try{s=await load("data/site.json")}catch(e){}
@@ -64,19 +63,3 @@ document.addEventListener("click",e=>{const b=e.target.closest(".th");if(!b)retu
     $("#assoc-title").textContent=a.titre||"L’association";
     assoc.innerHTML=String(a.texte||"").split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p.trim())}</p>`).join("")}catch(e){}}
 })();
-
-const lb=document.createElement("dialog");lb.id="lb";lb.setAttribute("aria-label","Photo agrandie");
-lb.innerHTML='<button class="lb-x" aria-label="Fermer">✕</button><button class="lb-p" aria-label="Photo précédente">‹</button><img alt=""><button class="lb-n" aria-label="Photo suivante">›</button><p class="lb-c"></p>';
-document.body.appendChild(lb);
-let cur=[],pos=0,x0=0;
-const show=()=>{lb.querySelector("img").src=src(cur[pos]);lb.querySelector(".lb-c").textContent=cur.length>1?`${pos+1} / ${cur.length}`:"";lb.classList.toggle("one",cur.length<2)};
-const go=d=>{pos=(pos+d+cur.length)%cur.length;show()};
-function openLb(m){cur=PH[m.id.slice(1)]||[];pos=+m.dataset.n||0;if(cur.length){show();lb.showModal()}}
-document.addEventListener("click",e=>{const m=e.target.closest(".main-img");if(m)openLb(m)});
-document.addEventListener("keydown",e=>{
-  if(e.target.classList&&e.target.classList.contains("main-img")&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openLb(e.target)}
-  if(!lb.open)return;if(e.key==="ArrowLeft")go(-1);if(e.key==="ArrowRight")go(1)});
-lb.addEventListener("click",e=>{const c=e.target.classList;
-  if(e.target===lb||c.contains("lb-x"))lb.close();else if(c.contains("lb-p"))go(-1);else if(c.contains("lb-n"))go(1)});
-lb.addEventListener("touchstart",e=>{x0=e.changedTouches[0].clientX},{passive:true});
-lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>50&&cur.length>1)go(d<0?1:-1)},{passive:true});
