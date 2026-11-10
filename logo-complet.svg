@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 110" role="img" aria-label="Hébergements Jeunes Challans">
+<g transform="translate(6 6)">
+<rect x="63" y="19" width="9" height="15" rx="2.5" fill="#2b7a4f"/>
+<circle cx="70" cy="11" r="4" fill="#e2574c"/><circle cx="78" cy="5.5" r="2.6" fill="#e2574c" opacity=".7"/>
+<path d="M24 46h48a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H42L26 93l2-9h-4a8 8 0 0 1-8-8V54a8 8 0 0 1 8-8z" fill="#e2574c"/>
+<circle cx="35" cy="66" r="4.2" fill="#fff"/><circle cx="48" cy="66" r="4.2" fill="#fff"/><circle cx="61" cy="66" r="4.2" fill="#fff"/>
+<path d="M9 50 48 17l39 33" fill="none" stroke="#2b7a4f" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="112" y="56" font-family="'Segoe UI',Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#2b7a4f">Hébergements Jeunes</text>
+<text x="112" y="90" font-family="'Segoe UI',Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#e2574c">Challans</text>
+</svg>

@@ -75,3 +75,4 @@ dialog#lb[open]{display:grid;place-items:center}
 .lb-p{left:12px;top:50%;transform:translateY(-50%)}.lb-n{right:12px;top:50%;transform:translateY(-50%)}
 .lb-c{position:absolute;bottom:16px;left:0;right:0;text-align:center;margin:0;font-size:.95rem}
 #lb.one .lb-p,#lb.one .lb-n{display:none}
+.brand{display:flex;align-items:center;gap:10px}.brand img{flex:none}
