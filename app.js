@@ -4,7 +4,6 @@ const load=async u=>{const r=await fetch(u,{cache:"no-cache"});if(!r.ok)throw ne
 const $=s=>document.querySelector(s);
 const PAGES=[["index.html","Accueil"],["association.html","L’association"],["logements.html","Logements"],["contact.html","Contact"]];
 const here=location.pathname.split("/").pop()||"index.html";
-document.head.insertAdjacentHTML("beforeend",'<link rel="icon" type="image/svg+xml" href="logo.svg">');
 document.body.insertAdjacentHTML("afterbegin",`<header class="top"><div class="wrap bar"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="38" height="38">Hébergements Jeunes <span>Challans</span></a><nav>${PAGES.map(([h,t])=>`<a href="${h}"${h===here?' aria-current="page"':""}>${t}</a>`).join("")}</nav></div></header>`);
 function contact(a){
   const mode=a.mode_contact||((a.telephone||a.email)?"coordonnees":"formulaire");
